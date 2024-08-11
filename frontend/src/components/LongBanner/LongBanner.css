@@ -1,0 +1,28 @@
+.long-banner{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/banner/b2.jpg");
+    justify-content:center;
+    width:100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+.long-banner h4{
+    color:#fff;
+    font-size: 16px;
+}
+.long-banner h2{
+    color:#fff;
+    font-size: 30px;
+    padding: 10px 0;
+}
+.long-banner h2 span{
+    color:#ef3636; 
+}
+.long-banner button:hover{
+    background-color: #088178;
+    color: #fff;
+}

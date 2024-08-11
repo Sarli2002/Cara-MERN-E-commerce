@@ -1,0 +1,42 @@
+.productBox{
+    width:23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+    margin: 15px 0;
+    position: relative;
+}
+.productBox:hover{
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
+}
+.productBox img{
+    width:100%;
+    border-radius:20px;
+}
+.productBox .des{
+     text-align: start;
+     padding: 10px 0;
+
+}
+.productBox .des span{
+    color:#606063;
+    font-size: 12px;
+}
+.productBox .des h5{
+    padding-top:7px;
+    color:#1a1a1a;
+    font-size: 14px;
+}
+.productBox .des i{
+    font-size:12px;
+    color: rgb(243,181,25);
+
+}
+.productBox .des h4{
+    padding-top: 7px;
+    font-size:15px;
+    font-weight: 700;
+    color:#088178;
+}
