@@ -257,6 +257,7 @@ app.post("/addproduct", async (req, res) => {
     image: req.body.image,
     category: req.body.category,
     price: req.body.price,
+    isFeatured: req.body.isFeatured,
    
   });
   await product.save();
