@@ -154,7 +154,7 @@ app.post('/signup', async (req, res) => {
     }
   }
 
-  const token = jwt.sign(data, 'secret_ecom');
+  const token = jwt.sign(data, process.env.JWT_SECRET);
   success = true;
   res.json({ success, token })
 })

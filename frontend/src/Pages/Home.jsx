@@ -16,10 +16,10 @@ function Home() {
     // fetch('http://localhost:4000/popularinwomen') 
     //         .then((res) => res.json()) 
     //         .then((data) => setPopular(data))
-    fetch('http://localhost:4000/featuredproducts') 
+    fetch('https://cara-mern-e-commerce.onrender.com/featuredproducts') 
     .then((res) => res.json()) 
     .then((data) => setfeaturedproducts(data))
-    fetch('http://localhost:4000/newcollections') 
+    fetch('https://cara-mern-e-commerce.onrender.com/newcollections') 
             .then((res) => res.json()) 
             .then((data) => setNewCollection(data))
     }

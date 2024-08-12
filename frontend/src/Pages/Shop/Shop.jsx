@@ -6,7 +6,7 @@ import ProductBox from "./../../components/ProductBox/ProductBox";
 export default function Shop() {
   const [allproducts, setAllProducts] = useState([]);
   const fetchInfo = () => { 
-    fetch('http://localhost:4000/allproducts') 
+    fetch('https://cara-mern-e-commerce.onrender.com/allproducts') 
             .then((res) => res.json()) 
             .then((data) => setAllProducts(data))
     }
