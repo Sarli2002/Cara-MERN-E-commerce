@@ -55,10 +55,10 @@ app.use('/images', express.static('upload/images'));
 //     res.status(401).send({ errors: "Please authenticate using a valid token" });
 //   }
 // };
-const fetchuser = (req, res, next) => {
+const fetchuser = async (req, res, next) => {
   const token = req.header("auth-token");
   if (!token) {
-    return res.status(401).send({ errors: "Please authenticate using a valid token" });
+    res.status(401).send({ errors: "Please authenticate using a valid token" });
   }
   try {
     const data = jwt.verify(token, process.env.JWT_SECRET);
@@ -68,6 +68,7 @@ const fetchuser = (req, res, next) => {
     res.status(401).send({ errors: "Please authenticate using a valid token" });
   }
 };
+
 
 
 // Schema for creating user model
@@ -115,7 +116,7 @@ app.post('/login', async (req, res) => {
       }
       success = true;
       console.log(user.id);
-      const token = jwt.sign(data, 'secret_ecom');
+      const token = jwt.sign(data, process.env.JWT_SECRET);
       res.json({ success, token });
     }
     else {
