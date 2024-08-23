@@ -28,9 +28,6 @@ const Navbar = () => {
       <ul ref={menuRef} className="nav-menu">
         <li onClick={()=>{setMenu("home")}}><Link to='/'>Home</Link>{menu==="home"?<hr/>:<></>}</li>
         <li onClick={()=>{setMenu("shop")}}><Link to='/shop'>Shop</Link>{menu==="shop"?<hr/>:<></>}</li> 
-        <li onClick={()=>{setMenu("about-us")}}><Link to='/'>About Us</Link>{menu==="about-us"?<hr/>:<></>}</li> 
-        
-        
       </ul>
       <div className="nav-login-cart">
         {localStorage.getItem('auth-token')

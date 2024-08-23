@@ -11,14 +11,9 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 
-// Database Connection With MongoDB
-//mongoose.connect("mongodb+srv://sarliofficial44:cara123@cluster0.86z4aof.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/e-commerce");
-
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
-// paste your mongoDB Connection string above with password
-// password should not contain '@' special character
 
 
 //Image Storage Engine 
@@ -42,19 +37,6 @@ app.use('/images', express.static('upload/images'));
 
 
 // MiddleWare to fetch user from token
-// const fetchuser = async (req, res, next) => {
-//   const token = req.header("auth-token");
-//   if (!token) {
-//     res.status(401).send({ errors: "Please authenticate using a valid token" });
-//   }
-//   try {
-//     const data = jwt.verify(token, "secret_ecom");
-//     req.user = data.user;
-//     next();
-//   } catch (error) {
-//     res.status(401).send({ errors: "Please authenticate using a valid token" });
-//   }
-// };
 const fetchuser = async (req, res, next) => {
   const token = req.header("auth-token");
   if (!token) {
@@ -168,22 +150,18 @@ app.get("/allproducts", async (req, res) => {
 });
 
 
-// endpoint for getting latest products data
-app.get("/newcollections", async (req, res) => {
-  let products = await Product.find({});
-  let arr = products.slice(0).slice(-8);
-  console.log("New Collections");
-  res.send(arr);
+// endpoint for getting New Arrivals
+app.get("/newarrivals", async (req, res) => {
+  try {
+    let products = await Product.find({});
+    let arr = products.slice(0).slice(-8);
+    res.status(200).json(arr); 
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" }); 
+  }
 });
 
 
-// endpoint for getting womens products data
-app.get("/popularinwomen", async (req, res) => {
-  let products = await Product.find({ category: "women" });
-  let arr = products.splice(0, 4);
-  console.log("Popular In Women");
-  res.send(arr);
-});
 
 //featuredproducts
 app.get("/featuredproducts", async (req, res) => {
@@ -196,16 +174,6 @@ app.get("/featuredproducts", async (req, res) => {
     console.error("Error fetching featured products:", error);
     res.status(500).send("Internal Server Error");
   }
-});
-
-
-// endpoint for getting womens products data
-app.post("/relatedproducts", async (req, res) => {
-  console.log("Related Products");
-  const {category} = req.body;
-  const products = await Product.find({ category });
-  const arr = products.slice(0, 4);
-  res.send(arr);
 });
 
 

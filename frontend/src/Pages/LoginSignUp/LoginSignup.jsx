@@ -12,7 +12,7 @@ const LoginSignup = () => {
 
   const login = async () => {
     let dataObj;
-    await fetch('http://localhost:4000/login', {
+    await fetch('https://cara-mern-e-commerce.onrender.com/login', {
       method: 'POST',
       headers: {
         Accept:'application/form-data',
@@ -35,7 +35,7 @@ const LoginSignup = () => {
 
   const signup = async () => {
     let dataObj;
-    await fetch('http://localhost:4000/signup', {
+    await fetch('https://cara-mern-e-commerce.onrender.com/signup', {
       method: 'POST',
       headers: {
         Accept:'application/form-data',
@@ -62,7 +62,7 @@ const LoginSignup = () => {
         <h1>{state}</h1>
         <div className="loginsignup-fields">
           {state==="Sign Up"?<input type="text" placeholder="Your name" name="username" value={formData.username} onChange={changeHandler}/>:<></>}
-          <input type="email" placeholder="Email address" name="email" value={formData.email} onChange={changeHandler}/>
+          <input type="email" placeholder="Email" name="email" value={formData.email} onChange={changeHandler}/>
           <input type="password" placeholder="Password" name="password" value={formData.password} onChange={changeHandler}/>
         </div>
 
@@ -72,10 +72,6 @@ const LoginSignup = () => {
         <p className="loginsignup-login">Create an account? <span onClick={()=>{setState("Sign Up")}}>Click here</span></p>
         :<p className="loginsignup-login">Already have an account? <span onClick={()=>{setState("Login")}}>Login here</span></p>}
 
-        <div className="loginsignup-agree">
-          <input type="checkbox" name="" id="" />
-          <p>By continuing, i agree to the terms of use & privacy policy.</p>
-        </div>
       </div>
     </div>
   );
