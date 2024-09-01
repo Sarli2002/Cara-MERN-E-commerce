@@ -49,7 +49,7 @@ const ListProduct = () => {
               <p className="cartitems-product-title">{e.name}</p>
               <p>{currency}{e.price}</p>
               <p>{e.category}</p>
-              <p>{e.isFeatured ? "Yes" : "No"}</p> 
+              <p>{e.isFeatured === "yes" ? "Yes" : "No"}</p> 
               <img className="listproduct-remove-icon" onClick={() => { removeProduct(e.id) }} src={cross_icon} alt="" />
             </div>
             <hr />
