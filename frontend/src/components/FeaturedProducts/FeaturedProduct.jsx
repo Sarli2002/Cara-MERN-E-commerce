@@ -1,19 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import ProductBox from '../ProductBox/ProductBox';
+import "./FeaturedProducts.css";
 
-import ProductBox from '../ProductBox/ProductBox'
-import "./FeaturedProducts.css"
-function FeaturedProducts(props) {
+function FeaturedProducts({ data }) {
+  useEffect(() => {
+    console.log("Featured Products Data:", data); 
+  }, [data]);
+
+  // Filter only featured products
+  const featuredProducts = data.filter(product => product.isFeatured);
+
   return (
     <div className='featuredProducts section-p1'>
-    <h2> Featured Products</h2>
-    <p> Summer Collection New Modern Design</p>
-    <div className="pro-container">
-      {props.data.map((product,i)=>{
-          return <ProductBox key={i} id={product.id} name={product.name} companyName={product.companyName} image={product.image} price={product.price} />
-      })}
+      <h2>Featured Products</h2>
+      <p>Summer Collection New Modern Design</p>
+      <div className="pro-container">
+        {featuredProducts.length > 0 ? (
+          featuredProducts.map((product, i) => (
+            <ProductBox
+              key={i}
+              id={product.id}
+              name={product.name}
+              companyName={product.companyName}
+              image={product.image}
+              price={product.price}
+            />
+          ))
+        ) : (
+          <p>No featured products available at the moment.</p>
+        )}
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
-export default FeaturedProducts
+export default FeaturedProducts;

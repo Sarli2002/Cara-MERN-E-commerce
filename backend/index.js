@@ -71,10 +71,10 @@ const Product = mongoose.model("Product", {
   image: { type: String, required: true },
   category: { type: String, required: true },
   price: { type: Number },
-  isFeatured: { type: String, default: false } ,
+  isFeatured: { type: String, required: true}, 
   date: { type: Date, default: Date.now },
-  available: { type: Boolean, default: true },
 });
+
 
 
 // ROOT API Route For Testing
@@ -166,8 +166,7 @@ app.get("/newarrivals", async (req, res) => {
 //featuredproducts
 app.get("/featuredproducts", async (req, res) => {
   try {
-    // Fetch featured products, limiting to the top 8 for this example
-    let arr = await Product.find({ isFeatured: "yes" }).limit(8);
+    let arr = await Product.find({ isFeatured: "yes" }).limit(8); 
     console.log("Featured Products fetched successfully");
     res.send(arr);
   } catch (error) {
@@ -175,7 +174,6 @@ app.get("/featuredproducts", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
 
 // Create an endpoint for saving the product in cart
 app.post('/addtocart', fetchuser, async (req, res) => {
@@ -210,6 +208,7 @@ app.post('/getcart', fetchuser, async (req, res) => {
 
 // Create an endpoint for adding products using admin panel
 app.post("/addproduct", async (req, res) => {
+  console.log("Received product data:", req.body); 
   let products = await Product.find({});
   let id;
   if (products.length > 0) {
@@ -226,7 +225,6 @@ app.post("/addproduct", async (req, res) => {
     category: req.body.category,
     price: req.body.price,
     isFeatured: req.body.isFeatured,
-   
   });
   await product.save();
   console.log("Saved");

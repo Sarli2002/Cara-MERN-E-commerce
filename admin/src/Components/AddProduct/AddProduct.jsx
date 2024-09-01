@@ -11,10 +11,11 @@ const AddProduct = () => {
     image: "",
     category: "women",
     price: "",
-    isFeatured: false,
+    isFeatured: "yes",
   });
 
   const AddProduct = async () => {
+    console.log("Product Details before sending:", productDetails); 
     let dataObj;
     let product = productDetails;
 
@@ -53,6 +54,7 @@ const AddProduct = () => {
       [name]: type === 'checkbox' ? checked : value
     });
   }
+
 
   return (
     <div className="addproduct">
