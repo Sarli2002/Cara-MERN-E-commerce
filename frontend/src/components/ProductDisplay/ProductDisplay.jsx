@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './ProductDisplay.css';
 import { ShopContext } from '../../Context/ShopContext';
-import { backend_url, currency } from "../../App";
+import { currency } from "../../App";
 
 const ProductDisplay = ({product}) => {
   
@@ -20,7 +20,7 @@ const ProductDisplay = ({product}) => {
   return (
     <div className="product-display section-p1">
       <div className="single-pro-image">
-        <img src={backend_url + product.image} width="100%" id="Main-image" alt={product.name} />
+        <img src={product.image} width="100%" id="Main-image" alt={product.name} />
       </div>
       <div className="single-pro-details">
         <h4>{product.name}</h4>

@@ -5,7 +5,6 @@ import Home from "./Pages/Home";
 import "./App.css"; 
 import Shop from "./Pages/Shop/Shop";
 import Product from "./Pages/Product";
-import Footer from "./components/Footer/Footer";
 import Cart from "./Pages/Cart";
 import LoginSignup from "./Pages/LoginSignUp/LoginSignup"
 export const backend_url = "https://cara-mern-e-commerce.onrender.com";

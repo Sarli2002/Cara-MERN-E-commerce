@@ -16,11 +16,18 @@ const AddProduct = () => {
 
   const AddProduct = async () => {
     console.log("Product Details before sending:", productDetails); 
+    
     let dataObj;
     let product = productDetails;
+    console.log("Product before sending:", product); 
+    if (!image) {
+      alert("Please select an image before adding the product.");
+      return;
+    }
 
     let formData = new FormData();
-    formData.append('product', image);
+    formData.append("product", image);
+   
 
     await fetch(`${backend_url}/upload`, {
       method: 'POST',
@@ -29,10 +36,12 @@ const AddProduct = () => {
       },
       body: formData,
     }).then((resp) => resp.json())
-      .then((data) => { dataObj = data });
+      .then((data) => {dataObj = data });
 
     if (dataObj.success) {
       product.image = dataObj.image_url;
+      console.log("Product after upload:", product); 
+      console.log("Product Details after upload:", productDetails); 
       await fetch(`${backend_url}/addproduct`, {
         method: 'POST',
         headers: {
@@ -42,10 +51,18 @@ const AddProduct = () => {
         body: JSON.stringify(product),
       })
         .then((resp) => resp.json())
-        .then((data) => { data.success ? alert("Product Added") : alert("Failed") });
+        .then((data) => { 
+          console.log("Product  after sending:", product); 
+          data.success ? alert("Product Added") : alert("Failed to add product") });
 
     }
+    else {
+      console.error("Failed to upload image to S3:", dataObj.error);
+      alert("Failed to upload image to S3");
+    }
+
   }
+  
 
   const changeHandler = (e) => {
     const { name, value, type, checked } = e.target;
