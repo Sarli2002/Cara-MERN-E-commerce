@@ -51,12 +51,7 @@ const ProductDisplay = ({product}) => {
         </button>
         <h4> Product Details</h4>
         <span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-          nihil animi ipsam, ad deleniti dolorem eius id reprehenderit voluptate
-          ab incidunt doloribus repudiandae nulla at perspiciatis cumque? Ab
-          laboriosam corporis molestiae, minus ea sed esse nemo ratione debitis,
-          deleniti aliquid dolore optio quaerat nobis atque nulla explicabo
-          sequi odio voluptatum.
+          {product.description}
         </span>
       </div>
     </div>
