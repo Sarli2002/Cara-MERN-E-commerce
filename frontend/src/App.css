@@ -67,6 +67,12 @@ button.white{
 body{
     width:100%;
 }
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
 @media (max-width:799px) {
     .section-p1{

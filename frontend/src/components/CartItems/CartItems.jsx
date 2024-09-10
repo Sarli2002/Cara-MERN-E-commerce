@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './CartItems.css';
 import { ShopContext } from '../../Context/ShopContext';
 import remove_icon from '../assets/cart_cross_icon.png';
-import { backend_url, currency } from "../../App";
+import { currency } from "../../App";
 const CartItems = () => {
   const {products} = useContext(ShopContext);
   const {cartItems,removeFromCart,getTotalCartAmount} = useContext(ShopContext);

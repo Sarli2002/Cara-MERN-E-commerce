@@ -5,7 +5,7 @@ import { currency } from '../../App'
 const ProductBox = (props) => {
   return (
     <div className='productBox '> 
-       <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={props.image} alt="" /></Link>
+       <Link to={`/product/${props.id}`}><img onClick={() => window.scrollTo(0, 0)}  src={props.image} alt=""  loading="lazy"/></Link>
             <div className="des">
                 <span>{props.companyName}</span>
                 <h5>{props.name}</h5>

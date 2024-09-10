@@ -1,22 +1,27 @@
-import React, { useEffect, useState  } from "react";
+import React, { useState } from "react";
 import "./Shop.css";
-
 import ProductBox from "./../../components/ProductBox/ProductBox";
+import { useQuery } from '@tanstack/react-query';
 
 export default function Shop() {
-  const [allproducts, setAllProducts] = useState([]);
-  const fetchInfo = () => { 
-    fetch('https://cara-mern-e-commerce.onrender.com/allproducts') 
-            .then((res) => res.json()) 
-            .then((data) => setAllProducts(data))
-    }
-
-    useEffect(() => {
-      fetchInfo();
-    }, [])
-
   const [sortCriteria, setSortCriteria] = useState("default");
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // Correct useQuery usage with object form as argument in React Query v5
+  const { data: allproducts = [], error, isLoading } = useQuery({
+    queryKey: ['allproducts'],
+    queryFn: async () => {
+      const res = await fetch('https://cara-mern-e-commerce.onrender.com/allproducts');
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    }
+  });
+
+  // Error handling and loading states
+  if (isLoading) return <div className="loading">Loading...</div>;
+  if (error) return <p>Error: {error.message}</p>;
 
   const handleSortChange = (event) => {
     setSortCriteria(event.target.value);
