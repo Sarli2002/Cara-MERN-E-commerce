@@ -4,7 +4,6 @@ import "./FeaturedProducts.css";
 
 function FeaturedProducts({ data }) {
   useEffect(() => {
-    console.log("Featured Products Data:", data); 
   }, [data]);
 
   // Filter only featured products
