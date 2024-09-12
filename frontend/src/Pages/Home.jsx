@@ -12,7 +12,7 @@ import { useQuery } from '@tanstack/react-query';
 function Home() {
 
   // Fetching featured products with React Query
-  const { data: featuredproducts = [], isLoading: isLoadingFeatured, error: errorFeatured } = useQuery({
+  const { data: featuredproducts = []} = useQuery({
     queryKey: ['featuredproducts'],
     queryFn: async () => {
       const res = await fetch('https://cara-mern-e-commerce.onrender.com/featuredproducts');
@@ -24,7 +24,7 @@ function Home() {
   });
 
   // Fetching new arrivals with React Query
-  const { data: newarrivals = [], isLoading: isLoadingNewArrivals, error: errorNewArrivals } = useQuery({
+  const { data: newarrivals = []} = useQuery({
     queryKey: ['newarrivals'],
     queryFn: async () => {
       const res = await fetch('https://cara-mern-e-commerce.onrender.com/newarrivals');
@@ -34,15 +34,6 @@ function Home() {
       return res.json();
     }
   });
-
-  // Loading and error handling for featured products
-  if (isLoadingFeatured || isLoadingNewArrivals) {
-    return <div className='loading'>Loading...</div>;
-  }
-
-  if (errorFeatured || errorNewArrivals) {
-    return <div>Error: {errorFeatured?.message || errorNewArrivals?.message}</div>;
-  }
 
   return (
     <div>

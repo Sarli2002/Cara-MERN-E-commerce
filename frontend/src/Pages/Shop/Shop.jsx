@@ -8,7 +8,7 @@ export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   // Correct useQuery usage with object form as argument in React Query v5
-  const { data: allproducts = [], error, isLoading } = useQuery({
+  const { data: allproducts = []} = useQuery({
     queryKey: ['allproducts'],
     queryFn: async () => {
       const res = await fetch('https://cara-mern-e-commerce.onrender.com/allproducts');
@@ -18,10 +18,6 @@ export default function Shop() {
       return res.json();
     }
   });
-
-  // Error handling and loading states
-  if (isLoading) return <div className="loading">Loading...</div>;
-  if (error) return <p>Error: {error.message}</p>;
 
   const handleSortChange = (event) => {
     setSortCriteria(event.target.value);
