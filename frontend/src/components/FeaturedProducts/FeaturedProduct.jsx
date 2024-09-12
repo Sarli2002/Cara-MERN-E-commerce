@@ -14,7 +14,7 @@ function FeaturedProducts({ data }) {
       <h2>Featured Products</h2>
       <p>Summer Collection New Modern Design</p>
       <div className="pro-container">
-        {featuredProducts.length > 0 ? (
+        {
           featuredProducts.map((product, i) => (
             <ProductBox
               key={i}
@@ -25,9 +25,7 @@ function FeaturedProducts({ data }) {
               price={product.price}
             />
           ))
-        ) : (
-          <p>No featured products available at the moment.</p>
-        )}
+        }
       </div>
     </div>
   );
