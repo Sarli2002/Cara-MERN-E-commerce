@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState  } from 'react';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { backend_url } from "../App";
 
 export const ShopContext = createContext(null);
@@ -39,11 +40,15 @@ const getDefaultCart = () => {
 
   const addToCart = (itemId, size, quantity = 1) => {
     if (!localStorage.getItem("auth-token")) {
-      alert("Please Login");
+      toast.error("Please login to add products to the cart.", {
+        autoClose: 3000, 
+      });
       return;
     }
     if (!size){
-      alert("Please select size");
+      toast.error("Please select a size before adding to the cart.", {
+        autoClose: 3000,
+      });
       return;
     }
 
@@ -54,7 +59,12 @@ const getDefaultCart = () => {
         [size]: (prev[itemId][size] || 0) + quantity,
       },
     }));
+
     console.log(cartItems);
+    toast.success('Product added to cart!', {
+      autoClose: 2000, 
+    });
+
     if (localStorage.getItem("auth-token")) {
       fetch(`${backend_url}/addtocart`, {
         method: 'POST',
@@ -129,6 +139,7 @@ const getDefaultCart = () => {
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}
+      <ToastContainer />
     </ShopContext.Provider>
   );
 };

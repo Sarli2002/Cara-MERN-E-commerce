@@ -102,7 +102,6 @@ const Product = mongoose.model("Product", {
 });
 
 
-
 // ROOT API Route For Testing
 app.get("/", (req, res) => {
   res.send("Root");
@@ -181,7 +180,7 @@ app.get("/newarrivals", async (req, res) => {
   try {
     let products = await Product.find({});
     let arr = products.slice(0).slice(-8);
-    res.status(200).json(arr); 
+    res.send(arr);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" }); 
   }
