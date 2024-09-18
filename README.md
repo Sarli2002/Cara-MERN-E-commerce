@@ -1,6 +1,6 @@
 # **Cara MERN E-commerce**
 
-An end-to-end **E-commerce platform** built using the **MERN** stack, featuring user authentication, product management, a dynamic admin panel, and image storage with AWS S3. The app provides a seamless shopping experience with a responsive UI, secure user management, and dynamic backend API integration.
+An end-to-end **E-commerce platform** built using the **MERN** stack, featuring user authentication, product management, a dynamic **admin panel**, and image storage with **AWS S3**. The app provides a seamless shopping experience with a responsive UI, secure user management, and dynamic backend API integration.
 
 ## **Features**
 - **User Authentication:** Sign-up, login, and secure authentication using **JWT** tokens.
@@ -16,4 +16,7 @@ An end-to-end **E-commerce platform** built using the **MERN** stack, featuring 
 - **MongoDB** – For database storage and management.
 - **AWS S3** – For image storage.
 - **JWT** – For authentication.
+
+## Deployment
+The website is deployed on Render. You can access the live version [here](https://cara-mern-e-commerce-frontend.onrender.com).
 
