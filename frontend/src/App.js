@@ -7,9 +7,7 @@ import Shop from "./Pages/Shop/Shop";
 import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
 import LoginSignup from "./Pages/LoginSignUp/LoginSignup"
-// export const backend_url = "http://localhost:4000";
-// export const backend_url = "https://cara-mern-e-commerce.onrender.com";
-export const backend_url = process.env.BACKEND_URL;
+export const backend_url = process.env.REACT_APP_BACKEND_URL;
 export const currency = '$';
 function App() {
   return (
