@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./LoginSignup.css";
+import { backend_url } from "../../App";
 
 const LoginSignup = () => {
   const [state, setState] = useState("Login");
@@ -26,7 +27,7 @@ const LoginSignup = () => {
 
   const login = async () => {
     let dataObj;
-    await fetch("https://cara-mern-e-commerce.onrender.com/login", {
+    await fetch(`${backend_url}/login`, {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -49,7 +50,7 @@ const LoginSignup = () => {
 
   const signup = async () => {
     let dataObj;
-    await fetch("https://cara-mern-e-commerce.onrender.com/signup", {
+    await fetch(`${backend_url}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/form-data",
