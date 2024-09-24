@@ -7,41 +7,43 @@ import NewArrivals from '../components/NewArrivals/NewArrivals';
 import Smallbanner from '../components/SmallBanner/SmallBanner';
 import NewsLetter from "../components/NewsLetter/NewsLetter";
 import Footer from "../components/Footer/Footer";
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 
 function Home() {
 
   // Fetching featured products with React Query
-  const { data: featuredproducts = []} = useQuery({
-    queryKey: ['featuredproducts'],
-    queryFn: async () => {
-      const res = await fetch('https://cara-mern-e-commerce.onrender.com/featuredproducts');
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return res.json();
-    }
-  });
+  // const { data: featuredproducts = []} = useQuery({
+  //   queryKey: ['featuredproducts'],
+  //   queryFn: async () => {
+  //     const res = await fetch('https://cara-mern-e-commerce.onrender.com/featuredproducts');
+  //     if (!res.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     return res.json();
+  //   }
+  // });
 
   // Fetching new arrivals with React Query
-  const { data: newarrivals = []} = useQuery({
-    queryKey: ['newarrivals'],
-    queryFn: async () => {
-      const res = await fetch('https://cara-mern-e-commerce.onrender.com/newarrivals');
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return res.json();
-    }
-  });
+  // const { data: newarrivals = []} = useQuery({
+  //   queryKey: ['newarrivals'],
+  //   queryFn: async () => {
+  //     const res = await fetch('https://cara-mern-e-commerce.onrender.com/newarrivals');
+  //     if (!res.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     return res.json();
+  //   }
+  // });
 
   return (
     <div>
       <Hero />
       <Features />
-      <FeaturedProducts data={featuredproducts} />
+      {/* <FeaturedProducts data={featuredproducts} /> */}
+      <FeaturedProducts/>
       <LongBanner />
-      <NewArrivals data={newarrivals} />
+      {/* <NewArrivals data={newarrivals} /> */}
+      <NewArrivals  />
       <Smallbanner />
       <NewsLetter />
       <Footer />

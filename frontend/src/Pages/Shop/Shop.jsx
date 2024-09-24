@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Shop.css";
 import ProductBox from "./../../components/ProductBox/ProductBox";
-import { useQuery } from '@tanstack/react-query';
+import { ShopContext } from './../../Context/ShopContext'
+// import { useQuery } from '@tanstack/react-query';
 
 export default function Shop() {
   const [sortCriteria, setSortCriteria] = useState("default");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const {products}= useContext(ShopContext);
 
   // Correct useQuery usage with object form as argument in React Query v5
-  const { data: allproducts = []} = useQuery({
-    queryKey: ['allproducts'],
-    queryFn: async () => {
-      const res = await fetch('https://cara-mern-e-commerce.onrender.com/allproducts');
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return res.json();
-    }
-  });
+  // const { data: allproducts = []} = useQuery({
+  //   queryKey: ['allproducts'],
+  //   queryFn: async () => {
+  //     const res = await fetch('https://cara-mern-e-commerce.onrender.com/allproducts');
+  //     if (!res.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     return res.json();
+  //   }
+  // });
 
   const handleSortChange = (event) => {
     setSortCriteria(event.target.value);
@@ -49,7 +51,8 @@ export default function Shop() {
     return products.filter(product => product.category === selectedCategory);
   };
 
-  const filteredProducts = filterProducts(allproducts);
+  // const filteredProducts = filterProducts(allproducts);
+  const filteredProducts = filterProducts(products);
   const sortedAndFilteredProducts = sortProducts(filteredProducts);
 
   return (
