@@ -18,5 +18,5 @@ An end-to-end **E-commerce platform** built using the **MERN** stack, featuring 
 - **JWT** – For authentication.
 
 ## Deployment
-The website is deployed on Render. You can access the live version [here](https://cara-frontend.vercel.app).
+The website is deployed on Vercel. You can access the live version [here](https://cara-frontend.vercel.app).
 
