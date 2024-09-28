@@ -19,5 +19,6 @@ An end-to-end **E-commerce platform** built using the **MERN** stack, featuring 
 
 ## Deployment
 The website is deployed on Render. You can access the live version [here](https://cara-frontend.vercel.app).
-## [Admin Panel](https://cara-admin.vercel.app)
+<br>
+[Admin Panel](https://cara-admin.vercel.app)
 
